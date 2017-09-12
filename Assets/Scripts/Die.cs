@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
-
-	//public Health health = new Health ();
+public class Die : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -16,11 +14,8 @@ public class Enemy : MonoBehaviour {
 		
 	}
 
-	/*void OnCollision2DEnter(Collision col){
+	public void PlayerIsDead(){
 
-		if(col.gameObject.name == "Player"){
-
-			health.reduceHealth ();
-		}
-	}*/
+		Debug.Log ("Player dead");
+	}
 }

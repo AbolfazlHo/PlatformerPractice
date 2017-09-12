@@ -31,12 +31,13 @@ public class Player : MonoBehaviour
     bool shoot = false;
     bool jump = false;
 
+	Health _health = new Health();
+
     void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
         _facingRight = true;
-
 
     }
 
@@ -115,12 +116,14 @@ public class Player : MonoBehaviour
             Powerup power = hit2d.transform.GetComponent<Powerup>();
             if (power != null)
             {
+				Debug.Log ("POWERUP");
                 HandlePowerUp(power);
             }
 
             Enemy enemy = hit2d.transform.GetComponent<Enemy>();
             if (enemy != null)
             {
+				//Debug.Log ("ENEMY");
                 HandleEnemy(enemy);
             }
         }
@@ -132,7 +135,8 @@ public class Player : MonoBehaviour
 
     void HandleEnemy(Enemy enemy)
     {
-
+		//Debug.Log ("HANDLE ENEMY");
+		_health.reduceHealth ();
     }
 
     void HandlePowerUp(Powerup power)
@@ -182,16 +186,20 @@ public class Player : MonoBehaviour
 
 
 
-    void OnTriggerEnter2D(Collider2D col)
+
+   /* void OnTriggerEnter2D(Collider2D col)
     {
+		Debug.Log ("TRIGGER");
         Enemy enemy = col.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-            enemy.Die();
+			Debug.Log ("ENEMY");
+			_health.reduceHealth ();
+            //enemy.Die();
             //print("OnTriggerEnter2D" + col.gameObject.name);
         }
 
-    }
+    }*/
 
 
 
